@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rennale Renuelly</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --green-deep:#2b5a3a;
+  --green-hero:#2d5e3e;
+  --teal:#3d8b78;
+  --cream-btn:#e8d9be;
+  --radius:16px;
+  --radius-lg:22px;
+  --text-light:rgba(255,255,255,.75);
+  --max-w:1200px;
+}
+html{scroll-behavior:smooth}
+body{
+  font-family:'Inter',system-ui,-apple-system,sans-serif;
+  color:#fff;
+  background:#263e2e;
+  overflow-x:hidden;
+  -webkit-font-smoothing:antialiased;
+}
+
+/* ===================== HERO ===================== */
+.hero{
+  position:relative;
+  min-height:540px;
+  background:linear-gradient(160deg,#2a5438 0%,#306545 35%,#3a7050 60%,#2d5a3e 100%);
+  display:flex;
+  align-items:center;
+  padding:60px 6% 90px;
+  overflow:hidden;
+}
+.hero::before{
+  content:'';position:absolute;inset:0;
+  background:
+    radial-gradient(ellipse 50% 70% at 25% 55%,rgba(25,60,38,.5),transparent),
+    radial-gradient(ellipse 40% 50% at 75% 35%,rgba(55,100,65,.35),transparent);
+  pointer-events:none;
+}
+
+.hero-content{
+  position:relative;z-index:3;
+  max-width:500px;
+}
+.hero-title{
+  font-family:'Playfair Display',Georgia,serif;
+  font-size:clamp(2.6rem,5.5vw,4rem);
+  font-weight:800;
+  line-height:1.08;
+  margin-bottom:22px;
+  letter-spacing:-.02em;
+  text-shadow:0 2px 16px rgba(0,0,0,.2);
+}
+.hero-desc{
+  font-size:.92rem;
+  line-height:1.75;
+  color:var(--text-light);
+  margin-bottom:34px;
+  max-width:420px;
+}
+.hero-btn{
+  display:inline-block;
+  padding:14px 34px;
+  background:var(--cream-btn);
+  color:#3a3020;
+  font-family:'Inter',sans-serif;
+  font-size:.92rem;
+  font-weight:600;
+  border:none;
+  border-radius:50px;
+  cursor:pointer;
+  text-decoration:none;
+  transition:transform .2s,box-shadow .2s;
+  box-shadow:0 4px 20px rgba(0,0,0,.15);
+}
+.hero-btn:hover{
+  transform:translateY(-2px);
+  box-shadow:0 8px 28px rgba(0,0,0,.22);
+}
+
+/* ---------- Decorative Leaves ---------- */
+.hero-deco{
+  position:absolute;
+  right:0;top:0;bottom:0;
+  width:55%;
+  z-index:1;
+  pointer-events:none;
+  overflow:visible;
+}
+.hero-deco svg{
+  position:absolute;
+  filter:drop-shadow(0 6px 20px rgba(0,0,0,.25));
+}
+.deco-leaf-green-lg{
+  width:300px;right:8%;top:2%;
+  transform:rotate(-20deg);
+  z-index:2;
+}
+.deco-leaf-brown{
+  width:280px;right:2%;top:8%;
+  transform:rotate(10deg);
+  z-index:3;
+}
+.deco-leaf-dark{
+  width:240px;right:-2%;top:30%;
+  transform:rotate(-35deg);
+  z-index:1;
+}
+.deco-leaf-sm{
+  width:70px;right:44%;top:-2%;
+  transform:rotate(40deg);
+  z-index:4;
+  opacity:.75;
+}
+.deco-leaf-sm2{
+  width:50px;right:52%;top:8%;
+  transform:rotate(-30deg);
+  z-index:4;
+  opacity:.55;
+}
+
+/* ===================== FEATURES BAR ===================== */
+.features-wrap{
+  padding:0 6%;
+  margin-top:-44px;
+  position:relative;z-index:5;
+  max-width:calc(var(--max-w) + 12%);
+  margin-left:auto;margin-right:auto;
+}
+.features-bar{
+  background:linear-gradient(140deg,#3a8878 0%,#4c9b8a 35%,#418a7a 65%,#367868 100%);
+  border-radius:var(--radius-lg);
+  padding:38px 36px;
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:28px;
+  box-shadow:0 8px 40px rgba(0,0,0,.18);
+  position:relative;
+  overflow:hidden;
+}
+.features-bar::after{
+  content:'';position:absolute;inset:0;
+  background:url("data:image/svg+xml,%3Csvg width='300' height='300' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M150 20C180 70,220 140,200 220C180 280,120 300,100 260C80 220,120 160,150 100z' fill='rgba(255,255,255,.025)'/%3E%3Cpath d='M80 60C100 100,130 170,110 230C90 270,50 270,40 240C30 210,60 160,80 110z' fill='rgba(255,255,255,.018)' transform='translate(120,-20)'/%3E%3C/svg%3E") repeat;
+  pointer-events:none;
+}
+.feature-item{text-align:center;position:relative;z-index:1}
+.feature-icon{
+  width:54px;height:54px;
+  margin:0 auto 14px;
+  background:rgba(255,255,255,.13);
+  border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+}
+.feature-icon svg{width:24px;height:24px;stroke:#fff;fill:none;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+.feature-title{font-weight:600;font-size:.92rem;margin-bottom:8px}
+.feature-desc{font-size:.76rem;color:var(--text-light);line-height:1.65}
+
+/* ===================== CARDS ===================== */
+.cards-wrap{
+  padding:44px 6% 52px;
+  max-width:calc(var(--max-w) + 12%);
+  margin:0 auto;
+}
+.cards-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:20px;
+}
+.card{
+  border-radius:var(--radius);
+  padding:26px 22px;
+  min-height:200px;
+  display:flex;flex-direction:column;
+  position:relative;overflow:hidden;
+  transition:transform .25s,box-shadow .25s;
+}
+.card:hover{
+  transform:translateY(-4px);
+  box-shadow:0 12px 36px rgba(0,0,0,.25);
+}
+.card-icon{
+  width:48px;height:48px;
+  border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  margin-bottom:16px;flex-shrink:0;
+}
+.card-icon svg{width:22px;height:22px}
+.card-title{font-weight:600;font-size:.98rem;margin-bottom:8px}
+.card-desc{font-size:.76rem;color:rgba(255,255,255,.68);line-height:1.65;flex:1}
+
+/* Card 1 — Sage Green */
+.c1{background:linear-gradient(150deg,#7ea87d,#6d976c)}
+.c1 .card-icon{background:rgba(255,255,255,.17)}
+.c1 .card-icon svg{stroke:#fff;fill:none;stroke-width:1.4}
+
+/* Card 2 — Slate Dark */
+.c2{background:linear-gradient(150deg,#4d5e66,#3e4f58)}
+.c2 .card-icon{background:rgba(255,255,255,.08)}
+.c2 .card-icon svg{fill:#6a9a6a;stroke:none}
+
+/* Card 3 — Olive/Khaki */
+.c3{background:linear-gradient(150deg,#8d7d5c,#7d6d4c)}
+.c3 .card-icon{background:transparent}
+.c3 .card-icon svg{fill:#d4b060;stroke:none}
+
+/* Card 4 — Nature Photo */
+.c4{
+  padding:0;
+  background:linear-gradient(135deg,#4a7a3a,#3a6a2a);
+  position:relative;overflow:hidden;
+}
+.c4-scene{position:absolute;inset:0;width:100%;height:100%}
+.c4-inner{
+  position:relative;z-index:1;
+  padding:26px 22px;
+  height:100%;display:flex;flex-direction:column;
+}
+
+/* Card 5 — Dark Brown */
+.c5{background:linear-gradient(150deg,#6d5848,#5c4838)}
+.c5 .card-icon{background:rgba(255,255,255,.12)}
+.c5 .card-icon svg{stroke:#fff;fill:none;stroke-width:1.4}
+
+/* Card 6 — Warm Tan */
+.c6{background:linear-gradient(150deg,#c8a87a,#b89868)}
+.c6 .card-icon{background:transparent}
+.c6 .card-icon svg{stroke:#7a5a30;fill:none;stroke-width:1.4}
+.c6 .card-title{color:#2e2010}
+.c6 .card-desc{color:rgba(50,35,15,.65)}
+
+/* ===================== FOOTER ===================== */
+.footer{
+  text-align:center;
+  padding:34px 6%;
+  background:#1a2a20;
+  color:rgba(255,255,255,.45);
+  font-size:.85rem;
+  letter-spacing:.5px;
+}
+
+/* ===================== RESPONSIVE ===================== */
+@media(max-width:1024px){
+  .hero{min-height:460px;padding:50px 5% 80px}
+  .deco-leaf-green-lg{width:240px}
+  .deco-leaf-brown{width:220px}
+  .deco-leaf-dark{width:190px}
+}
+@media(max-width:820px){
+  .features-bar{grid-template-columns:repeat(2,1fr);gap:22px;padding:30px 24px}
+  .cards-grid{grid-template-columns:repeat(2,1fr)}
+  .hero-deco{width:48%;opacity:.8}
+}
+@media(max-width:580px){
+  .hero{
+    min-height:auto;
+    padding:36px 6% 100px;
+  }
+  .hero-title{font-size:2rem}
+  .hero-desc{font-size:.86rem}
+  .hero-deco{width:55%;opacity:.4;right:-8%}
+  .features-wrap{margin-top:-30px}
+  .features-bar{
+    grid-template-columns:1fr;
+    gap:20px;padding:24px 18px;
+  }
+  .feature-item{display:flex;align-items:flex-start;text-align:left;gap:14px}
+  .feature-icon{margin:0;flex-shrink:0}
+  .cards-grid{grid-template-columns:1fr}
+  .card{min-height:170px}
+}
+</style>
+</head>
+<body>
+
+<!-- ======================== HERO ======================== -->
+<section class="hero">
+  <div class="hero-content">
+    <h1 class="hero-title">Rennale<br>Renuelly</h1>
+    <p class="hero-desc">Lorem peincunan lare creatiyoour aimense ent, ernun wesflantion ateps morer wist bal mandptirollan en ceral. Cepstodes anites. Melasifyive atanete enpee cord walha concoprantiasa testfallata dalstoca a turcing, brecend autanolica oquan.</p>
+    <a href="#" class="hero-btn">Heses Roge</a>
+  </div>
+
+  <!-- Decorative Leaves -->
+  <div class="hero-deco" aria-hidden="true">
+    <!-- Large green leaf (back) -->
+    <svg class="deco-leaf-green-lg" viewBox="0 0 260 400" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <linearGradient id="gL" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stop-color="#4e9a54"/>
+          <stop offset="40%" stop-color="#3d8844"/>
+          <stop offset="100%" stop-color="#2a6832"/>
+        </linearGradient>
+      </defs>
+      <path d="M130 8 C185 55,230 150,218 245 C210 295,175 345,130 385 C85 345,50 295,42 245 C30 150,75 55,130 8z" fill="url(#gL)"/>
+      <path d="M130 35 L130 365" stroke="rgba(255,255,255,.1)" stroke-width="1.8" fill="none"/>
+      <path d="M130 90 L78 58" stroke="rgba(255,255,255,.06)" stroke-width=".9" fill="none"/>
+      <path d="M130 140 L68 105" stroke="rgba(255,255,255,.06)" stroke-width=".9" fill="none"/>
+      <path d="M130 190 L58 155" stroke="rgba(255,255,255,.06)" stroke-width=".9" fill="none"/>
+      <path d="M130 240 L62 210" stroke="rgba(255,255,255,.06)" stroke-width=".9" fill="none"/>
+      <path d="M130 290 L72 265" stroke="rgba(255,255,255,.06)" stroke-width=".9" fill="none"/>
+      <path d="M130 90 L182 58" stroke="rgba(255,255,255,.06)" stroke-width=".9" fill="none"/>
+      <path d="M130 140 L192 105" stroke="rgba(255,255,255,.06)" stroke-width=".9" fill="none"/>
+      <path d="M130 190 L202 155" stroke="rgba(255,255,255,.06)" stroke-width=".9" fill="none"/>
+      <path d="M130 240 L198 210" stroke="rgba(255,255,255,.06)" stroke-width=".9" fill="none"/>
+      <path d="M130 290 L188 265" stroke="rgba(255,255,255,.06)" stroke-width=".9" fill="none"/>
+    </svg>
+
+    <!-- Brown / copper leaf (front) -->
+    <svg class="deco-leaf-brown" viewBox="0 0 260 400" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <linearGradient id="bL" x1="20%" y1="0%" x2="80%" y2="100%">
+          <stop offset="0%" stop-color="#c4985e"/>
+          <stop offset="35%" stop-color="#a88050"/>
+          <stop offset="70%" stop-color="#8a6840"/>
+          <stop offset="100%" stop-color="#705030"/>
+        </linearGradient>
+      </defs>
+      <path d="M130 6 C188 52,232 148,222 242 C215 292,178 342,130 382 C82 342,45 292,38 242 C28 148,72 52,130 6z" fill="url(#bL)"/>
+      <path d="M130 32 L130 362" stroke="rgba(255,255,255,.08)" stroke-width="1.8" fill="none"/>
+      <path d="M130 85 L80 56" stroke="rgba(255,255,255,.05)" stroke-width=".8" fill="none"/>
+      <path d="M130 135 L70 102" stroke="rgba(255,255,255,.05)" stroke-width=".8" fill="none"/>
+      <path d="M130 185 L62 152" stroke="rgba(255,255,255,.05)" stroke-width=".8" fill="none"/>
+      <path d="M130 235 L66 208" stroke="rgba(255,255,255,.05)" stroke-width=".8" fill="none"/>
+      <path d="M130 285 L75 260" stroke="rgba(255,255,255,.05)" stroke-width=".8" fill="none"/>
+      <path d="M130 85 L180 56" stroke="rgba(255,255,255,.05)" stroke-width=".8" fill="none"/>
+      <path d="M130 135 L190 102" stroke="rgba(255,255,255,.05)" stroke-width=".8" fill="none"/>
+      <path d="M130 185 L198 152" stroke="rgba(255,255,255,.05)" stroke-width=".8" fill="none"/>
+      <path d="M130 235 L194 208" stroke="rgba(255,255,255,.05)" stroke-width=".8" fill="none"/>
+      <path d="M130 285 L185 260" stroke="rgba(255,255,255,.05)" stroke-width=".8" fill="none"/>
+    </svg>
+
+    <!-- Dark green leaf (behind) -->
+    <svg class="deco-leaf-dark" viewBox="0 0 240 370" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <linearGradient id="dL" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stop-color="#2c6e3a"/>
+          <stop offset="100%" stop-color="#1c4e28"/>
+        </linearGradient>
+      </defs>
+      <path d="M120 8 C170 50,210 140,200 225 C192 272,160 318,120 355 C80 318,48 272,40 225 C30 140,70 50,120 8z" fill="url(#dL)"/>
+      <path d="M120 30 L120 338" stroke="rgba(255,255,255,.06)" stroke-width="1.5" fill="none"/>
+    </svg>
+
+    <!-- Small accent leaves -->
+    <svg class="deco-leaf-sm" viewBox="0 0 80 125" xmlns="http://www.w3.org/2000/svg">
+      <path d="M40 4 C58 22,72 56,68 82 C65 98,54 112,40 120 C26 112,15 98,12 82 C8 56,22 22,40 4z" fill="#4a9050"/>
+      <path d="M40 14 L40 112" stroke="rgba(255,255,255,.08)" stroke-width="1" fill="none"/>
+    </svg>
+    <svg class="deco-leaf-sm2" viewBox="0 0 60 95" xmlns="http://www.w3.org/2000/svg">
+      <path d="M30 3 C44 16,54 42,52 62 C50 74,42 85,30 92 C18 85,10 74,8 62 C6 42,16 16,30 3z" fill="#5da858"/>
+      <path d="M30 10 L30 86" stroke="rgba(255,255,255,.07)" stroke-width=".8" fill="none"/>
+    </svg>
+  </div>
+</section>
+
+<!-- ======================== FEATURES ======================== -->
+<section class="features-wrap">
+  <div class="features-bar">
+    <!-- 1: Exelgor is -->
+    <div class="feature-item">
+      <div class="feature-icon">
+        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1.2" fill="#fff" stroke="none"/></svg>
+      </div>
+      <div>
+        <div class="feature-title">Exelgor is</div>
+        <div class="feature-desc">Bejaynesatla ibicunameste sormbiteal la epromeltin surpel. Lesrn porcitatimus cespiadinedj hyopen. Lesn tarcenecation endiaosea plandisecturmos en messaoes.</div>
+      </div>
+    </div>
+    <!-- 2: Narcomersi -->
+    <div class="feature-item">
+      <div class="feature-icon">
+        <svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg>
+      </div>
+      <div>
+        <div class="feature-title">Narcomersi</div>
+        <div class="feature-desc">Blanbprag yor calienstoal. Lasi birtoneces supconore con concilaon el caronerles. Poledisectumos en mesdoeon.</div>
+      </div>
+    </div>
+    <!-- 3: Cleorews -->
+    <div class="feature-item">
+      <div class="feature-icon">
+        <svg viewBox="0 0 24 24"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
+      </div>
+      <div>
+        <div class="feature-title">Cleorews</div>
+        <div class="feature-desc">Callecoresperagol cael lam. Iclen colnepentorsa contoron econsore calentori rianestem el mercaloris.</div>
+      </div>
+    </div>
+    <!-- 4: Weahe slonsacion -->
+    <div class="feature-item">
+      <div class="feature-icon">
+        <svg viewBox="0 0 24 24"><circle cx="12" cy="7" r="4"/><path d="M5.5 21a6.5 6.5 0 0 1 13 0"/></svg>
+      </div>
+      <div>
+        <div class="feature-title">Weahe slonsacion</div>
+        <div class="feature-desc">Lemontored fas yor enformsted ol etsea. Meseonterser calontori, quren ero cee endol capiertio enel tarcenecatise.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======================== CARDS ======================== -->
+<section class="cards-wrap">
+  <div class="cards-grid">
+
+    <!-- Card 1 — Sage Green -->
+    <div class="card c1">
+      <div class="card-icon">
+        <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="3"/>
+          <path d="M12 2 C8 6,6 8,6 12 c0 4,2 6,6 10 4-4,6-6,6-10 0-4-2-6-6-10z"/>
+        </svg>
+      </div>
+      <div class="card-title">Siare Seador</div>
+      <div class="card-desc">Cerensapresorlas ilor en espertian sulpen. Misartor entos crespen entiomesta celarcal con rotiladiom en merladoras.</div>
+    </div>
+
+    <!-- Card 2 — Slate Dark -->
+    <div class="card c2">
+      <div class="card-icon">
+        <svg viewBox="0 0 24 24">
+          <circle cx="12" cy="12" r="11" fill="rgba(0,0,0,.3)" stroke="none"/>
+          <path d="M10 7 C12 5,15 6,15 9 C15 12,13 16,12 18 C11 16,9 12,9 9 C9 7,10 6,10 7z" fill="#6aaa6a"/>
+          <path d="M12 8 L12 17" stroke="rgba(255,255,255,.15)" stroke-width=".7" fill="none"/>
+        </svg>
+      </div>
+      <div class="card-title">Teovnt</div>
+      <div class="card-desc">..emply crentori reperest conrolarsi. Epleniorem colpicatisa en erclonateri aconsore colentori rianested.</div>
+    </div>
+
+    <!-- Card 3 — Olive/Khaki -->
+    <div class="card c3">
+      <div class="card-icon">
+        <svg viewBox="0 0 24 24">
+          <path d="M12 2 C14 7,17 10,17 14 C17 18,15 21,12 22 C9 21,7 18,7 14 C7 10,10 7,12 2z"/>
+          <path d="M9 8 C12 10,15 8,15 8" fill="none" stroke="rgba(180,140,50,.4)" stroke-width="1"/>
+          <path d="M8 12 C12 14,16 12,16 12" fill="none" stroke="rgba(180,140,50,.4)" stroke-width="1"/>
+        </svg>
+      </div>
+      <div class="card-title">Vousihuters</div>
+      <div class="card-desc">Mersacontered calontori. Bafors en erespton. Misarter entos crepen entomesta celarcale con rotiladio.</div>
+    </div>
+
+    <!-- Card 4 — Nature Landscape -->
+    <div class="card c4">
+      <svg class="c4-scene" viewBox="0 0 500 280" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <linearGradient id="sky" x1="0" y1="0" x2=".2" y2="1">
+            <stop offset="0%" stop-color="#c8a848" stop-opacity=".35"/>
+            <stop offset="30%" stop-color="#7a9a48" stop-opacity=".55"/>
+            <stop offset="60%" stop-color="#4a7a30" stop-opacity=".8"/>
+            <stop offset="100%" stop-color="#2a5820" stop-opacity="1"/>
+          </linearGradient>
+          <radialGradient id="sun" cx="15%" cy="22%" r="45%">
+            <stop offset="0%" stop-color="#fae8a8" stop-opacity=".5"/>
+            <stop offset="30%" stop-color="#e8c870" stop-opacity=".25"/>
+            <stop offset="60%" stop-color="#c0a850" stop-opacity=".08"/>
+            <stop offset="100%" stop-color="#80a040" stop-opacity="0"/>
+          </radialGradient>
+          <linearGradient id="fog" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#f0d890" stop-opacity=".12"/>
+            <stop offset="100%" stop-color="#5a8a3a" stop-opacity="0"/>
+          </linearGradient>
+          <linearGradient id="ground" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#3a6828"/>
+            <stop offset="100%" stop-color="#1e4a18"/>
+          </linearGradient>
+        </defs>
+        <rect width="500" height="280" fill="#2e6028"/>
+        <rect width="500" height="280" fill="url(#sky)"/>
+        <circle cx="75" cy="55" r="110" fill="url(#sun)"/>
+        <rect width="500" height="90" y="0" fill="url(#fog)"/>
+        <!-- Rolling hills -->
+        <ellipse cx="250" cy="240" rx="300" ry="70" fill="#2a5e24"/>
+        <ellipse cx="120" cy="250" rx="180" ry="55" fill="#265822"/>
+        <ellipse cx="380" cy="248" rx="200" ry="60" fill="#245220"/>
+        <ellipse cx="250" cy="265" rx="300" ry="40" fill="url(#ground)"/>
+        <!-- Far tree line -->
+        <path d="M0 180 Q20 165,30 175 Q35 160,45 170 Q55 150,65 165 Q72 148,80 162 Q90 145,100 160 Q108 140,118 158 Q128 142,138 160 Q145 148,155 165 Q165 150,175 168 Q180 155,190 170 Q200 158,210 172 Q218 160,228 175 Q238 162,248 178 Q255 165,265 180 Q275 168,285 182 Q292 170,305 185 Q315 172,325 188 Q332 178,345 190 Q355 180,365 194 Q372 185,385 195 Q395 186,405 198 Q415 190,425 200 Q435 192,445 202 Q455 195,465 205 Q475 198,490 208 L500 210 L500 230 L0 230z" fill="#1e4e1a" opacity=".5"/>
+        <!-- Mid trees -->
+        <path d="M10 200 L18 145 L22 165 L28 125 L34 160 L38 140 L46 200z" fill="#1a461a" opacity=".55"/>
+        <path d="M55 205 L65 150 L70 172 L76 130 L82 168 L88 148 L98 205z" fill="#1a461a" opacity=".5"/>
+        <path d="M140 210 L148 162 L152 178 L158 140 L164 175 L168 155 L178 210z" fill="#1a461a" opacity=".45"/>
+        <path d="M260 208 L270 155 L275 175 L282 135 L290 172 L295 150 L308 208z" fill="#1a461a" opacity=".5"/>
+        <path d="M330 212 L338 165 L342 180 L350 145 L356 178 L360 158 L372 212z" fill="#1a461a" opacity=".45"/>
+        <path d="M400 215 L410 168 L414 185 L420 148 L428 180 L432 162 L445 215z" fill="#1a461a" opacity=".4"/>
+        <!-- Light rays from sun -->
+        <path d="M75 55 L20 260 L50 260z" fill="rgba(250,232,168,.05)"/>
+        <path d="M75 55 L70 260 L110 260z" fill="rgba(250,232,168,.045)"/>
+        <path d="M75 55 L130 260 L180 260z" fill="rgba(250,232,168,.035)"/>
+        <path d="M75 55 L200 260 L260 260z" fill="rgba(250,232,168,.025)"/>
+        <!-- Mist layers -->
+        <ellipse cx="120" cy="190" rx="100" ry="12" fill="rgba(200,210,180,.06)"/>
+        <ellipse cx="350" cy="195" rx="80" ry="10" fill="rgba(200,210,180,.04)"/>
+      </svg>
+      <div class="c4-inner"></div>
+    </div>
+
+    <!-- Card 5 — Dark Brown -->
+    <div class="card c5">
+      <div class="card-icon">
+        <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 3 C9 6,7 9,7 12 a5 5 0 0 0 10 0 C17 9,15 6,12 3z" stroke="#fff" fill="none" stroke-width="1.4"/>
+          <circle cx="12" cy="11" r="1.8" fill="rgba(255,255,255,.45)" stroke="none"/>
+          <path d="M9.5 14.5 Q12 17,14.5 14.5" stroke="#fff" fill="none" stroke-width="1.2"/>
+        </svg>
+      </div>
+      <div class="card-title">Saeci Paste</div>
+      <div class="card-desc">Jaer corectori ralopast reperosenta. Conrolarsi epleniorem colpicatisa en erclonateri econcore.</div>
+    </div>
+
+    <!-- Card 6 — Warm Tan -->
+    <div class="card c6">
+      <div class="card-icon">
+        <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 2 L16.5 7 L16.5 15 L12 20 L7.5 15 L7.5 7z"/>
+          <line x1="7.5" y1="10" x2="16.5" y2="10"/>
+          <line x1="7.5" y1="13" x2="16.5" y2="13"/>
+        </svg>
+      </div>
+      <div class="card-title">Blistoare</div>
+      <div class="card-desc">Therosemcalaseta endocortianal. Misarterontos crepen entiomesta celarcal con rotiladiomen meridorlas.</div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ======================== FOOTER ======================== -->
+<footer class="footer">Pestres 1</footer>
+
+</body>
+</html>
