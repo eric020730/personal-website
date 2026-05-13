@@ -1,0 +1,606 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rennale Renuelly — Deep Ocean Abyss</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@700;800&family=Space+Grotesk:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --navy:#0B1929;
+  --abyss:#0D2137;
+  --cyan:#00D4FF;
+  --cyan-soft:#0AF0E8;
+  --coral:#FF6B6B;
+  --coral-light:#FF8A80;
+  --teal-deep:#0D3B4E;
+  --teal:#145C6E;
+  --radius:16px;
+  --radius-lg:22px;
+  --text-light:rgba(255,255,255,.72);
+  --max-w:1200px;
+}
+html{scroll-behavior:smooth}
+body{
+  font-family:'Space Grotesk',system-ui,-apple-system,sans-serif;
+  color:#fff;
+  background:#091420;
+  overflow-x:hidden;
+  -webkit-font-smoothing:antialiased;
+}
+
+/* ===================== HERO ===================== */
+.hero{
+  position:relative;
+  min-height:540px;
+  background:linear-gradient(160deg,#080e1a 0%,#0B1929 30%,#0D2137 60%,#0a1828 100%);
+  display:flex;
+  align-items:center;
+  padding:60px 6% 90px;
+  overflow:hidden;
+}
+.hero::before{
+  content:'';position:absolute;inset:0;
+  background:
+    radial-gradient(ellipse 45% 60% at 30% 60%,rgba(0,212,255,.06),transparent),
+    radial-gradient(ellipse 50% 50% at 70% 40%,rgba(10,240,232,.04),transparent),
+    radial-gradient(ellipse 30% 40% at 50% 80%,rgba(0,100,180,.08),transparent);
+  pointer-events:none;
+}
+
+.hero-content{
+  position:relative;z-index:3;
+  max-width:500px;
+}
+.hero-title{
+  font-family:'Cormorant Garamond',Georgia,serif;
+  font-size:clamp(2.6rem,5.5vw,4rem);
+  font-weight:800;
+  line-height:1.08;
+  margin-bottom:22px;
+  letter-spacing:-.02em;
+  text-shadow:0 0 30px rgba(0,212,255,.15),0 2px 16px rgba(0,0,0,.3);
+}
+.hero-desc{
+  font-size:.92rem;
+  line-height:1.75;
+  color:var(--text-light);
+  margin-bottom:34px;
+  max-width:420px;
+}
+.hero-btn{
+  display:inline-block;
+  padding:14px 34px;
+  background:linear-gradient(135deg,#00D4FF,#0AF0E8 40%,#0ba8c8);
+  color:#fff;
+  font-family:'Space Grotesk',sans-serif;
+  font-size:.92rem;
+  font-weight:600;
+  border:none;
+  border-radius:50px;
+  cursor:pointer;
+  text-decoration:none;
+  transition:transform .2s,box-shadow .2s;
+  box-shadow:0 4px 24px rgba(0,212,255,.25),0 0 60px rgba(0,212,255,.08);
+  text-shadow:0 1px 2px rgba(0,0,0,.2);
+}
+.hero-btn:hover{
+  transform:translateY(-2px);
+  box-shadow:0 8px 32px rgba(0,212,255,.35),0 0 80px rgba(0,212,255,.12);
+}
+
+/* ---------- Decorative Ocean Elements ---------- */
+.hero-deco{
+  position:absolute;
+  right:0;top:0;bottom:0;
+  width:55%;
+  z-index:1;
+  pointer-events:none;
+  overflow:visible;
+}
+.hero-deco svg{
+  position:absolute;
+}
+
+.deco-jellyfish{
+  width:280px;right:6%;top:5%;
+  z-index:2;
+  opacity:.7;
+  filter:drop-shadow(0 0 30px rgba(0,212,255,.2));
+  animation:jellyFloat 8s ease-in-out infinite;
+}
+@keyframes jellyFloat{
+  0%,100%{transform:translateY(0)}
+  50%{transform:translateY(-18px)}
+}
+
+.deco-bubbles{
+  width:400px;height:100%;right:0;top:0;
+  z-index:3;
+}
+
+.deco-particles{
+  width:100%;height:100%;right:0;top:0;
+  z-index:1;
+  opacity:.6;
+}
+
+/* ===================== FEATURES BAR ===================== */
+.features-wrap{
+  padding:0 6%;
+  margin-top:-44px;
+  position:relative;z-index:5;
+  max-width:calc(var(--max-w) + 12%);
+  margin-left:auto;margin-right:auto;
+}
+.features-bar{
+  background:linear-gradient(140deg,rgba(13,59,78,.85) 0%,rgba(20,92,110,.8) 35%,rgba(15,70,90,.85) 65%,rgba(11,50,68,.9) 100%);
+  backdrop-filter:blur(12px);
+  -webkit-backdrop-filter:blur(12px);
+  border-radius:var(--radius-lg);
+  padding:38px 36px;
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:28px;
+  box-shadow:0 8px 40px rgba(0,0,0,.3),inset 0 1px 0 rgba(0,212,255,.1);
+  border:1px solid rgba(0,212,255,.08);
+  position:relative;
+  overflow:hidden;
+}
+.features-bar::after{
+  content:'';position:absolute;inset:0;
+  background:url("data:image/svg+xml,%3Csvg width='300' height='300' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='50' cy='60' r='2' fill='rgba(0,212,255,.04)'/%3E%3Ccircle cx='150' cy='30' r='1.5' fill='rgba(10,240,232,.03)'/%3E%3Ccircle cx='250' cy='80' r='1' fill='rgba(0,212,255,.05)'/%3E%3Ccircle cx='80' cy='180' r='2.5' fill='rgba(0,212,255,.03)'/%3E%3Ccircle cx='200' cy='220' r='1.5' fill='rgba(10,240,232,.04)'/%3E%3Ccircle cx='120' cy='260' r='1' fill='rgba(0,212,255,.03)'/%3E%3C/svg%3E") repeat;
+  pointer-events:none;
+}
+.feature-item{text-align:center;position:relative;z-index:1}
+.feature-icon{
+  width:54px;height:54px;
+  margin:0 auto 14px;
+  background:rgba(0,212,255,.1);
+  border:1px solid rgba(0,212,255,.15);
+  border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  box-shadow:0 0 20px rgba(0,212,255,.06);
+}
+.feature-icon svg{width:24px;height:24px;stroke:#00D4FF;fill:none;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+.feature-title{font-weight:600;font-size:.92rem;margin-bottom:8px}
+.feature-desc{font-size:.76rem;color:var(--text-light);line-height:1.65}
+
+/* ===================== CARDS ===================== */
+.cards-wrap{
+  padding:44px 6% 52px;
+  max-width:calc(var(--max-w) + 12%);
+  margin:0 auto;
+}
+.cards-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:20px;
+}
+.card{
+  border-radius:var(--radius);
+  padding:26px 22px;
+  min-height:200px;
+  display:flex;flex-direction:column;
+  position:relative;overflow:hidden;
+  transition:transform .25s,box-shadow .25s;
+}
+.card:hover{
+  transform:translateY(-4px);
+  box-shadow:0 12px 40px rgba(0,0,0,.35),0 0 30px rgba(0,212,255,.06);
+}
+.card-icon{
+  width:48px;height:48px;
+  border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  margin-bottom:16px;flex-shrink:0;
+}
+.card-icon svg{width:22px;height:22px}
+.card-title{font-weight:600;font-size:.98rem;margin-bottom:8px}
+.card-desc{font-size:.76rem;color:rgba(255,255,255,.62);line-height:1.65;flex:1}
+
+/* Card 1 — Deep Teal */
+.c1{background:linear-gradient(150deg,#145C6E,#0D3B4E)}
+.c1 .card-icon{background:rgba(0,212,255,.12);border:1px solid rgba(0,212,255,.15)}
+.c1 .card-icon svg{stroke:#00D4FF;fill:none;stroke-width:1.4}
+
+/* Card 2 — Dark Navy with glow border */
+.c2{
+  background:linear-gradient(150deg,#0D2137,#0B1929);
+  border:1px solid rgba(0,212,255,.1);
+  box-shadow:0 0 20px rgba(0,212,255,.04);
+}
+.c2 .card-icon{background:rgba(0,212,255,.06)}
+.c2 .card-icon svg{fill:#0AF0E8;stroke:none}
+
+/* Card 3 — Coral/Warm Accent */
+.c3{background:linear-gradient(150deg,#FF6B6B,#cc4f4f)}
+.c3 .card-icon{background:rgba(255,255,255,.15)}
+.c3 .card-icon svg{fill:#fff;stroke:none}
+.c3 .card-desc{color:rgba(255,255,255,.72)}
+
+/* Card 4 — Underwater Scene */
+.c4{
+  padding:0;
+  background:linear-gradient(135deg,#0a1e30,#081828);
+  position:relative;overflow:hidden;
+}
+.c4-scene{position:absolute;inset:0;width:100%;height:100%}
+.c4-inner{
+  position:relative;z-index:1;
+  padding:26px 22px;
+  height:100%;display:flex;flex-direction:column;
+}
+
+/* Card 5 — Very Dark Blue/Black */
+.c5{background:linear-gradient(150deg,#0a0f1a,#060a12)}
+.c5 .card-icon{background:rgba(0,212,255,.1);border:1px solid rgba(0,212,255,.12)}
+.c5 .card-icon svg{stroke:#00D4FF;fill:none;stroke-width:1.4}
+
+/* Card 6 — Lighter Teal with transparency */
+.c6{
+  background:linear-gradient(150deg,rgba(20,92,110,.8),rgba(13,59,78,.7));
+  border:1px solid rgba(0,212,255,.08);
+}
+.c6 .card-icon{background:rgba(0,212,255,.08)}
+.c6 .card-icon svg{stroke:#0AF0E8;fill:none;stroke-width:1.4}
+
+/* ===================== FOOTER ===================== */
+.footer{
+  text-align:center;
+  padding:34px 6%;
+  background:#060c16;
+  color:rgba(255,255,255,.35);
+  font-size:.85rem;
+  letter-spacing:.5px;
+}
+
+/* ===================== RESPONSIVE ===================== */
+@media(max-width:1024px){
+  .hero{min-height:460px;padding:50px 5% 80px}
+  .deco-jellyfish{width:220px}
+}
+@media(max-width:820px){
+  .features-bar{grid-template-columns:repeat(2,1fr);gap:22px;padding:30px 24px}
+  .cards-grid{grid-template-columns:repeat(2,1fr)}
+  .hero-deco{width:48%;opacity:.8}
+}
+@media(max-width:580px){
+  .hero{
+    min-height:auto;
+    padding:36px 6% 100px;
+  }
+  .hero-title{font-size:2rem}
+  .hero-desc{font-size:.86rem}
+  .hero-deco{width:55%;opacity:.4;right:-8%}
+  .features-wrap{margin-top:-30px}
+  .features-bar{
+    grid-template-columns:1fr;
+    gap:20px;padding:24px 18px;
+  }
+  .feature-item{display:flex;align-items:flex-start;text-align:left;gap:14px}
+  .feature-icon{margin:0;flex-shrink:0}
+  .cards-grid{grid-template-columns:1fr}
+  .card{min-height:170px}
+}
+</style>
+</head>
+<body>
+
+<!-- ======================== HERO ======================== -->
+<section class="hero">
+  <div class="hero-content">
+    <h1 class="hero-title">Rennale<br>Renuelly</h1>
+    <p class="hero-desc">Lorem peincunan lare creatiyoour aimense ent, ernun wesflantion ateps morer wist bal mandptirollan en ceral. Cepstodes anites. Melasifyive atanete enpee cord walha concoprantiasa testfallata dalstoca a turcing, brecend autanolica oquan.</p>
+    <a href="#" class="hero-btn">Heses Roge</a>
+  </div>
+
+  <!-- Decorative Ocean Elements -->
+  <div class="hero-deco" aria-hidden="true">
+
+    <!-- Bio-luminescent particle field (back layer) -->
+    <svg class="deco-particles" viewBox="0 0 500 540" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <radialGradient id="pGlow">
+          <stop offset="0%" stop-color="#00D4FF" stop-opacity=".6"/>
+          <stop offset="100%" stop-color="#00D4FF" stop-opacity="0"/>
+        </radialGradient>
+      </defs>
+      <circle cx="80" cy="60" r="1.2" fill="#0AF0E8" opacity=".5"><animate attributeName="opacity" values=".5;.15;.5" dur="4s" repeatCount="indefinite"/></circle>
+      <circle cx="320" cy="90" r="1" fill="#00D4FF" opacity=".4"><animate attributeName="opacity" values=".4;.1;.4" dur="5s" repeatCount="indefinite"/></circle>
+      <circle cx="420" cy="150" r=".8" fill="#0AF0E8" opacity=".35"><animate attributeName="opacity" values=".35;.08;.35" dur="3.5s" repeatCount="indefinite"/></circle>
+      <circle cx="150" cy="200" r="1.5" fill="#00D4FF" opacity=".3"><animate attributeName="opacity" values=".3;.08;.3" dur="6s" repeatCount="indefinite"/></circle>
+      <circle cx="380" cy="280" r="1" fill="#0AF0E8" opacity=".4"><animate attributeName="opacity" values=".4;.1;.4" dur="4.5s" repeatCount="indefinite"/></circle>
+      <circle cx="250" cy="350" r="1.3" fill="#00D4FF" opacity=".25"><animate attributeName="opacity" values=".25;.06;.25" dur="5.5s" repeatCount="indefinite"/></circle>
+      <circle cx="460" cy="400" r=".9" fill="#0AF0E8" opacity=".35"><animate attributeName="opacity" values=".35;.1;.35" dur="3.8s" repeatCount="indefinite"/></circle>
+      <circle cx="100" cy="420" r="1.1" fill="#00D4FF" opacity=".3"><animate attributeName="opacity" values=".3;.08;.3" dur="4.2s" repeatCount="indefinite"/></circle>
+      <circle cx="300" cy="470" r=".7" fill="#0AF0E8" opacity=".4"><animate attributeName="opacity" values=".4;.12;.4" dur="5s" repeatCount="indefinite"/></circle>
+      <circle cx="200" cy="130" r=".6" fill="#00D4FF" opacity=".45"><animate attributeName="opacity" values=".45;.1;.45" dur="3s" repeatCount="indefinite"/></circle>
+      <circle cx="440" cy="50" r=".9" fill="#0AF0E8" opacity=".3"><animate attributeName="opacity" values=".3;.08;.3" dur="6.5s" repeatCount="indefinite"/></circle>
+      <circle cx="60" cy="320" r="1" fill="#00D4FF" opacity=".2"><animate attributeName="opacity" values=".2;.05;.2" dur="7s" repeatCount="indefinite"/></circle>
+    </svg>
+
+    <!-- Floating bubbles -->
+    <svg class="deco-bubbles" viewBox="0 0 400 540" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <radialGradient id="bub" cx="35%" cy="35%">
+          <stop offset="0%" stop-color="rgba(255,255,255,.12)"/>
+          <stop offset="50%" stop-color="rgba(0,212,255,.06)"/>
+          <stop offset="100%" stop-color="rgba(0,212,255,.02)"/>
+        </radialGradient>
+      </defs>
+      <circle cx="280" cy="420" r="18" fill="none" stroke="rgba(0,212,255,.12)" stroke-width=".6">
+        <animate attributeName="cy" values="420;380;420" dur="7s" repeatCount="indefinite"/>
+      </circle>
+      <circle cx="280" cy="420" r="18" fill="url(#bub)">
+        <animate attributeName="cy" values="420;380;420" dur="7s" repeatCount="indefinite"/>
+      </circle>
+      <circle cx="320" cy="320" r="12" fill="none" stroke="rgba(0,212,255,.1)" stroke-width=".5">
+        <animate attributeName="cy" values="320;286;320" dur="6s" repeatCount="indefinite"/>
+      </circle>
+      <circle cx="320" cy="320" r="12" fill="url(#bub)">
+        <animate attributeName="cy" values="320;286;320" dur="6s" repeatCount="indefinite"/>
+      </circle>
+      <circle cx="200" cy="460" r="8" fill="none" stroke="rgba(0,212,255,.08)" stroke-width=".4">
+        <animate attributeName="cy" values="460;430;460" dur="5s" repeatCount="indefinite"/>
+      </circle>
+      <circle cx="200" cy="460" r="8" fill="url(#bub)">
+        <animate attributeName="cy" values="460;430;460" dur="5s" repeatCount="indefinite"/>
+      </circle>
+      <circle cx="360" cy="200" r="6" fill="none" stroke="rgba(0,212,255,.09)" stroke-width=".4">
+        <animate attributeName="cy" values="200;178;200" dur="4.5s" repeatCount="indefinite"/>
+      </circle>
+      <circle cx="360" cy="200" r="6" fill="url(#bub)">
+        <animate attributeName="cy" values="200;178;200" dur="4.5s" repeatCount="indefinite"/>
+      </circle>
+      <circle cx="140" cy="350" r="10" fill="none" stroke="rgba(0,212,255,.07)" stroke-width=".5">
+        <animate attributeName="cy" values="350;322;350" dur="5.5s" repeatCount="indefinite"/>
+      </circle>
+      <circle cx="140" cy="350" r="10" fill="url(#bub)">
+        <animate attributeName="cy" values="350;322;350" dur="5.5s" repeatCount="indefinite"/>
+      </circle>
+      <circle cx="80" cy="160" r="5" fill="none" stroke="rgba(0,212,255,.06)" stroke-width=".3">
+        <animate attributeName="cy" values="160;145;160" dur="4s" repeatCount="indefinite"/>
+      </circle>
+      <circle cx="80" cy="160" r="5" fill="url(#bub)">
+        <animate attributeName="cy" values="160;145;160" dur="4s" repeatCount="indefinite"/>
+      </circle>
+      <circle cx="240" cy="100" r="4" fill="none" stroke="rgba(0,212,255,.08)" stroke-width=".3">
+        <animate attributeName="cy" values="100;88;100" dur="3.5s" repeatCount="indefinite"/>
+      </circle>
+      <circle cx="240" cy="100" r="4" fill="url(#bub)">
+        <animate attributeName="cy" values="100;88;100" dur="3.5s" repeatCount="indefinite"/>
+      </circle>
+    </svg>
+
+    <!-- Jellyfish (front layer) -->
+    <svg class="deco-jellyfish" viewBox="0 0 260 400" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <radialGradient id="jGlow" cx="50%" cy="30%" r="60%">
+          <stop offset="0%" stop-color="#00D4FF" stop-opacity=".18"/>
+          <stop offset="40%" stop-color="#0AF0E8" stop-opacity=".08"/>
+          <stop offset="100%" stop-color="#0D2137" stop-opacity="0"/>
+        </radialGradient>
+        <linearGradient id="jBody" x1="50%" y1="0%" x2="50%" y2="100%">
+          <stop offset="0%" stop-color="rgba(0,212,255,.2)"/>
+          <stop offset="50%" stop-color="rgba(10,240,232,.12)"/>
+          <stop offset="100%" stop-color="rgba(0,212,255,.04)"/>
+        </linearGradient>
+        <linearGradient id="jTent" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="rgba(0,212,255,.18)"/>
+          <stop offset="100%" stop-color="rgba(0,212,255,.02)"/>
+        </linearGradient>
+      </defs>
+      <!-- Outer glow -->
+      <ellipse cx="130" cy="110" rx="100" ry="80" fill="url(#jGlow)"/>
+      <!-- Bell / dome -->
+      <path d="M60 130 C60 60,90 30,130 30 C170 30,200 60,200 130 Q180 142,130 142 Q80 142,60 130z" fill="url(#jBody)" stroke="rgba(0,212,255,.15)" stroke-width=".8"/>
+      <!-- Inner dome details -->
+      <path d="M80 120 C80 75,100 50,130 50 C160 50,180 75,180 120" fill="none" stroke="rgba(0,212,255,.08)" stroke-width=".6"/>
+      <path d="M95 115 C95 82,108 62,130 62 C152 62,165 82,165 115" fill="none" stroke="rgba(0,212,255,.06)" stroke-width=".5"/>
+      <!-- Frilly edge -->
+      <path d="M58 132 Q68 145,80 135 Q92 148,105 136 Q118 150,130 138 Q142 150,155 136 Q168 148,180 135 Q192 145,202 132" fill="none" stroke="rgba(0,212,255,.2)" stroke-width="1"/>
+      <!-- Tentacles -->
+      <path d="M85 140 Q80 200,90 260 Q95 290,85 320 Q80 340,88 370" fill="none" stroke="url(#jTent)" stroke-width="1.5" stroke-linecap="round">
+        <animate attributeName="d" values="M85 140 Q80 200,90 260 Q95 290,85 320 Q80 340,88 370;M85 140 Q90 200,82 260 Q78 290,88 320 Q92 340,84 370;M85 140 Q80 200,90 260 Q95 290,85 320 Q80 340,88 370" dur="6s" repeatCount="indefinite"/>
+      </path>
+      <path d="M110 142 Q105 210,112 280 Q115 310,108 345 Q104 365,110 390" fill="none" stroke="url(#jTent)" stroke-width="1.2" stroke-linecap="round">
+        <animate attributeName="d" values="M110 142 Q105 210,112 280 Q115 310,108 345 Q104 365,110 390;M110 142 Q115 210,108 280 Q104 310,112 345 Q116 365,108 390;M110 142 Q105 210,112 280 Q115 310,108 345 Q104 365,110 390" dur="5s" repeatCount="indefinite"/>
+      </path>
+      <path d="M130 142 Q130 220,132 290 Q133 330,130 360 Q128 380,130 400" fill="none" stroke="url(#jTent)" stroke-width="1.8" stroke-linecap="round">
+        <animate attributeName="d" values="M130 142 Q130 220,132 290 Q133 330,130 360 Q128 380,130 400;M130 142 Q128 220,126 290 Q125 330,128 360 Q130 380,127 400;M130 142 Q130 220,132 290 Q133 330,130 360 Q128 380,130 400" dur="7s" repeatCount="indefinite"/>
+      </path>
+      <path d="M150 142 Q155 210,148 280 Q145 310,152 345 Q156 365,150 390" fill="none" stroke="url(#jTent)" stroke-width="1.2" stroke-linecap="round">
+        <animate attributeName="d" values="M150 142 Q155 210,148 280 Q145 310,152 345 Q156 365,150 390;M150 142 Q145 210,152 280 Q156 310,148 345 Q144 365,152 390;M150 142 Q155 210,148 280 Q145 310,152 345 Q156 365,150 390" dur="5.5s" repeatCount="indefinite"/>
+      </path>
+      <path d="M175 140 Q180 200,170 260 Q165 290,175 320 Q180 340,172 370" fill="none" stroke="url(#jTent)" stroke-width="1.5" stroke-linecap="round">
+        <animate attributeName="d" values="M175 140 Q180 200,170 260 Q165 290,175 320 Q180 340,172 370;M175 140 Q170 200,178 260 Q182 290,172 320 Q168 340,176 370;M175 140 Q180 200,170 260 Q165 290,175 320 Q180 340,172 370" dur="6.5s" repeatCount="indefinite"/>
+      </path>
+      <!-- Small glowing dots on bell -->
+      <circle cx="115" cy="90" r="2" fill="rgba(0,212,255,.2)"><animate attributeName="opacity" values=".2;.08;.2" dur="3s" repeatCount="indefinite"/></circle>
+      <circle cx="145" cy="85" r="1.5" fill="rgba(10,240,232,.18)"><animate attributeName="opacity" values=".18;.06;.18" dur="4s" repeatCount="indefinite"/></circle>
+      <circle cx="130" cy="105" r="2.5" fill="rgba(0,212,255,.15)"><animate attributeName="opacity" values=".15;.05;.15" dur="3.5s" repeatCount="indefinite"/></circle>
+      <circle cx="100" cy="108" r="1.2" fill="rgba(10,240,232,.12)"><animate attributeName="opacity" values=".12;.04;.12" dur="5s" repeatCount="indefinite"/></circle>
+      <circle cx="160" cy="100" r="1.8" fill="rgba(0,212,255,.14)"><animate attributeName="opacity" values=".14;.04;.14" dur="4.5s" repeatCount="indefinite"/></circle>
+    </svg>
+  </div>
+</section>
+
+<!-- ======================== FEATURES ======================== -->
+<section class="features-wrap">
+  <div class="features-bar">
+    <!-- 1: Exelgor is -->
+    <div class="feature-item">
+      <div class="feature-icon">
+        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1.2" fill="#00D4FF" stroke="none"/></svg>
+      </div>
+      <div>
+        <div class="feature-title">Exelgor is</div>
+        <div class="feature-desc">Bejaynesatla ibicunameste sormbiteal la epromeltin surpel. Lesrn porcitatimus cespiadinedj hyopen. Lesn tarcenecation endiaosea plandisecturmos en messaoes.</div>
+      </div>
+    </div>
+    <!-- 2: Narcomersi -->
+    <div class="feature-item">
+      <div class="feature-icon">
+        <svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg>
+      </div>
+      <div>
+        <div class="feature-title">Narcomersi</div>
+        <div class="feature-desc">Blanbprag yor calienstoal. Lasi birtoneces supconore con concilaon el caronerles. Poledisectumos en mesdoeon.</div>
+      </div>
+    </div>
+    <!-- 3: Cleorews -->
+    <div class="feature-item">
+      <div class="feature-icon">
+        <svg viewBox="0 0 24 24"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
+      </div>
+      <div>
+        <div class="feature-title">Cleorews</div>
+        <div class="feature-desc">Callecoresperagol cael lam. Iclen colnepentorsa contoron econsore calentori rianestem el mercaloris.</div>
+      </div>
+    </div>
+    <!-- 4: Weahe slonsacion -->
+    <div class="feature-item">
+      <div class="feature-icon">
+        <svg viewBox="0 0 24 24"><circle cx="12" cy="7" r="4"/><path d="M5.5 21a6.5 6.5 0 0 1 13 0"/></svg>
+      </div>
+      <div>
+        <div class="feature-title">Weahe slonsacion</div>
+        <div class="feature-desc">Lemontored fas yor enformsted ol etsea. Meseonterser calontori, quren ero cee endol capiertio enel tarcenecatise.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======================== CARDS ======================== -->
+<section class="cards-wrap">
+  <div class="cards-grid">
+
+    <!-- Card 1 — Deep Teal -->
+    <div class="card c1">
+      <div class="card-icon">
+        <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="3"/>
+          <path d="M12 2 C8 6,6 8,6 12 c0 4,2 6,6 10 4-4,6-6,6-10 0-4-2-6-6-10z"/>
+        </svg>
+      </div>
+      <div class="card-title">Siare Seador</div>
+      <div class="card-desc">Cerensapresorlas ilor en espertian sulpen. Misartor entos crespen entiomesta celarcal con rotiladiom en merladoras.</div>
+    </div>
+
+    <!-- Card 2 — Dark Navy with glow -->
+    <div class="card c2">
+      <div class="card-icon">
+        <svg viewBox="0 0 24 24">
+          <circle cx="12" cy="12" r="11" fill="rgba(0,212,255,.06)" stroke="none"/>
+          <path d="M10 7 C12 5,15 6,15 9 C15 12,13 16,12 18 C11 16,9 12,9 9 C9 7,10 6,10 7z" fill="#0AF0E8"/>
+          <path d="M12 8 L12 17" stroke="rgba(255,255,255,.15)" stroke-width=".7" fill="none"/>
+        </svg>
+      </div>
+      <div class="card-title">Teovnt</div>
+      <div class="card-desc">..emply crentori reperest conrolarsi. Epleniorem colpicatisa en erclonateri aconsore colentori rianested.</div>
+    </div>
+
+    <!-- Card 3 — Coral/Warm Accent -->
+    <div class="card c3">
+      <div class="card-icon">
+        <svg viewBox="0 0 24 24">
+          <path d="M12 2 C14 7,17 10,17 14 C17 18,15 21,12 22 C9 21,7 18,7 14 C7 10,10 7,12 2z"/>
+          <path d="M9 8 C12 10,15 8,15 8" fill="none" stroke="rgba(255,255,255,.35)" stroke-width="1"/>
+          <path d="M8 12 C12 14,16 12,16 12" fill="none" stroke="rgba(255,255,255,.35)" stroke-width="1"/>
+        </svg>
+      </div>
+      <div class="card-title">Vousihuters</div>
+      <div class="card-desc">Mersacontered calontori. Bafors en erespton. Misarter entos crepen entomesta celarcale con rotiladio.</div>
+    </div>
+
+    <!-- Card 4 — Underwater Scene -->
+    <div class="card c4">
+      <svg class="c4-scene" viewBox="0 0 500 280" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <linearGradient id="ocean-depth" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#0a2040" stop-opacity=".6"/>
+            <stop offset="30%" stop-color="#0B1929"/>
+            <stop offset="70%" stop-color="#081420"/>
+            <stop offset="100%" stop-color="#050a12"/>
+          </linearGradient>
+          <radialGradient id="abyssLight" cx="50%" cy="5%" r="60%">
+            <stop offset="0%" stop-color="#00D4FF" stop-opacity=".12"/>
+            <stop offset="30%" stop-color="#0AF0E8" stop-opacity=".05"/>
+            <stop offset="100%" stop-color="#0B1929" stop-opacity="0"/>
+          </radialGradient>
+          <linearGradient id="oceanFloor" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#0a1820"/>
+            <stop offset="100%" stop-color="#060e16"/>
+          </linearGradient>
+          <linearGradient id="coralG" x1="0" y1="1" x2="0" y2="0">
+            <stop offset="0%" stop-color="#FF6B6B" stop-opacity=".3"/>
+            <stop offset="100%" stop-color="#FF8A80" stop-opacity=".15"/>
+          </linearGradient>
+        </defs>
+        <rect width="500" height="280" fill="url(#ocean-depth)"/>
+        <rect width="500" height="280" fill="url(#abyssLight)"/>
+        <!-- Light beams from above -->
+        <path d="M180 0 L140 280 L190 280z" fill="rgba(0,212,255,.025)"/>
+        <path d="M220 0 L200 280 L260 280z" fill="rgba(0,212,255,.02)"/>
+        <path d="M300 0 L280 280 L340 280z" fill="rgba(0,212,255,.018)"/>
+        <path d="M380 0 L350 280 L410 280z" fill="rgba(0,212,255,.012)"/>
+        <!-- Ocean floor -->
+        <ellipse cx="250" cy="275" rx="300" ry="35" fill="url(#oceanFloor)"/>
+        <ellipse cx="120" cy="270" rx="140" ry="28" fill="#0a1520"/>
+        <ellipse cx="400" cy="272" rx="160" ry="30" fill="#081218"/>
+        <!-- Coral silhouettes -->
+        <path d="M60 265 Q62 240,70 230 Q75 225,72 215 Q78 218,80 210 Q82 220,86 225 Q90 235,88 265z" fill="url(#coralG)"/>
+        <path d="M100 265 Q103 245,108 238 Q112 230,110 222 Q115 228,118 218 Q120 226,124 232 Q128 240,125 265z" fill="rgba(255,107,107,.2)"/>
+        <path d="M380 268 Q382 248,390 240 Q395 234,392 225 Q398 230,400 220 Q402 228,406 235 Q410 244,408 268z" fill="url(#coralG)"/>
+        <path d="M430 268 Q433 252,438 245 Q440 238,438 232 Q444 236,445 228 Q447 236,450 242 Q452 250,450 268z" fill="rgba(255,138,128,.18)"/>
+        <!-- Bioluminescent particles -->
+        <circle cx="80" cy="60" r="1.5" fill="#00D4FF" opacity=".3"><animate attributeName="opacity" values=".3;.08;.3" dur="4s" repeatCount="indefinite"/></circle>
+        <circle cx="200" cy="100" r="1" fill="#0AF0E8" opacity=".25"><animate attributeName="opacity" values=".25;.06;.25" dur="5s" repeatCount="indefinite"/></circle>
+        <circle cx="350" cy="80" r="1.2" fill="#00D4FF" opacity=".2"><animate attributeName="opacity" values=".2;.05;.2" dur="3.5s" repeatCount="indefinite"/></circle>
+        <circle cx="150" cy="180" r=".8" fill="#0AF0E8" opacity=".35"><animate attributeName="opacity" values=".35;.1;.35" dur="4.5s" repeatCount="indefinite"/></circle>
+        <circle cx="400" cy="160" r="1" fill="#00D4FF" opacity=".25"><animate attributeName="opacity" values=".25;.06;.25" dur="6s" repeatCount="indefinite"/></circle>
+        <circle cx="280" cy="220" r=".7" fill="#0AF0E8" opacity=".3"><animate attributeName="opacity" values=".3;.08;.3" dur="3.8s" repeatCount="indefinite"/></circle>
+        <!-- Seaweed silhouettes -->
+        <path d="M170 270 Q165 250,170 235 Q175 220,168 205 Q172 195,170 185" fill="none" stroke="rgba(0,212,255,.08)" stroke-width="2" stroke-linecap="round"/>
+        <path d="M185 270 Q190 248,185 232 Q180 218,186 200" fill="none" stroke="rgba(10,240,232,.06)" stroke-width="1.5" stroke-linecap="round"/>
+        <path d="M310 268 Q305 250,310 238 Q315 225,308 210 Q312 200,310 190" fill="none" stroke="rgba(0,212,255,.07)" stroke-width="1.8" stroke-linecap="round"/>
+      </svg>
+      <div class="c4-inner"></div>
+    </div>
+
+    <!-- Card 5 — Very Dark Blue/Black -->
+    <div class="card c5">
+      <div class="card-icon">
+        <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 3 C9 6,7 9,7 12 a5 5 0 0 0 10 0 C17 9,15 6,12 3z" stroke="#00D4FF" fill="none" stroke-width="1.4"/>
+          <circle cx="12" cy="11" r="1.8" fill="rgba(0,212,255,.4)" stroke="none"/>
+          <path d="M9.5 14.5 Q12 17,14.5 14.5" stroke="#0AF0E8" fill="none" stroke-width="1.2"/>
+        </svg>
+      </div>
+      <div class="card-title">Saeci Paste</div>
+      <div class="card-desc">Jaer corectori ralopast reperosenta. Conrolarsi epleniorem colpicatisa en erclonateri econcore.</div>
+    </div>
+
+    <!-- Card 6 — Lighter Teal with transparency -->
+    <div class="card c6">
+      <div class="card-icon">
+        <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 2 L16.5 7 L16.5 15 L12 20 L7.5 15 L7.5 7z"/>
+          <line x1="7.5" y1="10" x2="16.5" y2="10"/>
+          <line x1="7.5" y1="13" x2="16.5" y2="13"/>
+        </svg>
+      </div>
+      <div class="card-title">Blistoare</div>
+      <div class="card-desc">Therosemcalaseta endocortianal. Misarterontos crepen entiomesta celarcal con rotiladiomen meridorlas.</div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ======================== FOOTER ======================== -->
+<footer class="footer">Pestres 1</footer>
+
+</body>
+</html>
