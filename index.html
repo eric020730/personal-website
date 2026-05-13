@@ -261,6 +261,56 @@ body{
   letter-spacing:.5px;
 }
 
+/* ===================== PARALLAX & REVEAL ===================== */
+
+/* Crystal parallax — driven by CSS custom property --scrollY set via JS */
+.hero-deco svg{
+  transition:transform .1s linear;
+  will-change:transform;
+}
+
+/* Reveal animation base */
+.reveal{
+  opacity:0;
+  transform:translateY(28px);
+  transition:opacity .7s cubic-bezier(.16,1,.3,1),transform .7s cubic-bezier(.16,1,.3,1);
+}
+.reveal.visible{
+  opacity:1;
+  transform:translateY(0);
+}
+
+/* Features bar frost-in */
+.features-bar.reveal{
+  opacity:0;
+  transform:translateY(20px) scale(.985);
+  transition:opacity .8s cubic-bezier(.16,1,.3,1),transform .8s cubic-bezier(.16,1,.3,1);
+}
+.features-bar.reveal.visible{
+  opacity:1;
+  transform:translateY(0) scale(1);
+}
+
+/* Cards staggered reveal */
+.card.reveal{transition-duration:.6s}
+.card.reveal:nth-child(1){transition-delay:0s}
+.card.reveal:nth-child(2){transition-delay:.08s}
+.card.reveal:nth-child(3){transition-delay:.16s}
+.card.reveal:nth-child(4){transition-delay:.24s}
+.card.reveal:nth-child(5){transition-delay:.32s}
+.card.reveal:nth-child(6){transition-delay:.4s}
+
+/* Card 4 internal parallax layers */
+.c4-scene .parallax-far{transition:transform .15s linear;will-change:transform}
+.c4-scene .parallax-near{transition:transform .15s linear;will-change:transform}
+
+/* Reduce motion for accessibility */
+@media(prefers-reduced-motion:reduce){
+  .reveal{opacity:1;transform:none;transition:none}
+  .hero-deco svg{transition:none}
+  .c4-scene .parallax-far,.c4-scene .parallax-near{transition:none}
+}
+
 /* ===================== RESPONSIVE ===================== */
 @media(max-width:1024px){
   .hero{min-height:460px;padding:50px 5% 80px}
@@ -416,7 +466,7 @@ body{
 
 <!-- ======================== FEATURES ======================== -->
 <section class="features-wrap">
-  <div class="features-bar">
+  <div class="features-bar reveal">
     <!-- 1: Exelgor is -->
     <div class="feature-item">
       <div class="feature-icon">
@@ -465,7 +515,7 @@ body{
   <div class="cards-grid">
 
     <!-- Card 1 — Light Ice Blue -->
-    <div class="card c1">
+    <div class="card c1 reveal">
       <div class="card-icon">
         <svg viewBox="0 0 24 24">
           <circle cx="12" cy="12" r="3"/>
@@ -477,7 +527,7 @@ body{
     </div>
 
     <!-- Card 2 — Steel Blue -->
-    <div class="card c2">
+    <div class="card c2 reveal">
       <div class="card-icon">
         <svg viewBox="0 0 24 24">
           <circle cx="12" cy="12" r="11" fill="rgba(255,255,255,.15)" stroke="none"/>
@@ -490,7 +540,7 @@ body{
     </div>
 
     <!-- Card 3 — Warm Silver -->
-    <div class="card c3">
+    <div class="card c3 reveal">
       <div class="card-icon">
         <svg viewBox="0 0 24 24">
           <path d="M12 2 C14 7,17 10,17 14 C17 18,15 21,12 22 C9 21,7 18,7 14 C7 10,10 7,12 2z"/>
@@ -503,7 +553,7 @@ body{
     </div>
 
     <!-- Card 4 — Winter Landscape -->
-    <div class="card c4">
+    <div class="card c4 reveal">
       <svg class="c4-scene" viewBox="0 0 500 280" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
         <defs>
           <linearGradient id="wsky" x1="0" y1="0" x2="0" y2="1">
@@ -544,34 +594,34 @@ body{
         <ellipse cx="250" cy="40" rx="220" ry="30" fill="url(#aurora1)"/>
         <ellipse cx="200" cy="55" rx="180" ry="20" fill="url(#aurora2)"/>
         <ellipse cx="320" cy="30" rx="140" ry="18" fill="url(#aurora2)" opacity=".7"/>
-        <!-- Far mountains -->
-        <path d="M0 180 L60 100 L120 140 L200 70 L260 130 L320 85 L400 120 L460 90 L500 130 L500 200 L0 200z" fill="url(#mt1)" opacity=".5"/>
-        <!-- Near mountains -->
-        <path d="M0 200 L80 120 L130 160 L180 105 L240 155 L300 110 L360 145 L420 100 L480 140 L500 125 L500 220 L0 220z" fill="url(#mt2)" opacity=".7"/>
-        <!-- Snow caps -->
-        <path d="M180 105 L195 120 L200 115 L210 130 L220 118 L240 155 L190 140 L170 148 L160 138 L140 155 L130 160z" fill="rgba(255,255,255,.5)"/>
-        <path d="M300 110 L315 125 L320 118 L335 140 L350 128 L360 145 L340 150 L310 148 L290 142 L280 148z" fill="rgba(255,255,255,.45)"/>
-        <path d="M420 100 L435 115 L440 110 L455 128 L470 118 L480 140 L460 138 L440 142 L410 135z" fill="rgba(255,255,255,.4)"/>
-        <!-- Snow ground -->
-        <ellipse cx="250" cy="260" rx="300" ry="55" fill="url(#snow-ground)"/>
-        <ellipse cx="130" cy="252" rx="160" ry="40" fill="#EAF0F6"/>
-        <ellipse cx="380" cy="255" rx="180" ry="45" fill="#E8EEF4"/>
-        <rect y="230" width="500" height="50" fill="url(#snow-ground)"/>
-        <!-- Pine tree silhouettes -->
-        <path d="M60 230 L68 185 L64 190 L70 165 L66 170 L72 148 L68 152 L74 130 L80 152 L76 148 L82 170 L78 165 L84 190 L80 185 L88 230z" fill="#7A94A8" opacity=".35"/>
-        <path d="M100 232 L106 195 L103 198 L108 178 L105 182 L110 162 L115 182 L112 178 L117 198 L114 195 L120 232z" fill="#7A94A8" opacity=".3"/>
-        <path d="M380 228 L388 180 L384 185 L390 158 L386 162 L392 138 L398 162 L394 158 L400 185 L396 180 L404 228z" fill="#7A94A8" opacity=".3"/>
-        <path d="M430 232 L436 198 L433 202 L438 182 L435 185 L440 168 L445 185 L442 182 L447 202 L444 198 L450 232z" fill="#7A94A8" opacity=".25"/>
-        <path d="M150 234 L155 205 L153 208 L157 192 L155 195 L160 178 L165 195 L163 192 L167 208 L165 205 L170 234z" fill="#8AA0B4" opacity=".22"/>
-        <!-- Mist -->
-        <ellipse cx="200" cy="225" rx="120" ry="10" fill="rgba(232,240,248,.3)"/>
-        <ellipse cx="380" cy="230" rx="90" ry="8" fill="rgba(232,240,248,.25)"/>
+        <!-- Far mountains (parallax-far: moves slower) -->
+        <g class="parallax-far">
+          <path d="M0 180 L60 100 L120 140 L200 70 L260 130 L320 85 L400 120 L460 90 L500 130 L500 200 L0 200z" fill="url(#mt1)" opacity=".5"/>
+          <path d="M180 105 L195 120 L200 115 L210 130 L220 118 L240 155 L190 140 L170 148 L160 138 L140 155 L130 160z" fill="rgba(255,255,255,.5)"/>
+          <path d="M300 110 L315 125 L320 118 L335 140 L350 128 L360 145 L340 150 L310 148 L290 142 L280 148z" fill="rgba(255,255,255,.45)"/>
+          <path d="M420 100 L435 115 L440 110 L455 128 L470 118 L480 140 L460 138 L440 142 L410 135z" fill="rgba(255,255,255,.4)"/>
+          <ellipse cx="200" cy="225" rx="120" ry="10" fill="rgba(232,240,248,.3)"/>
+          <ellipse cx="380" cy="230" rx="90" ry="8" fill="rgba(232,240,248,.25)"/>
+        </g>
+        <!-- Near mountains + trees (parallax-near: moves faster) -->
+        <g class="parallax-near">
+          <path d="M0 200 L80 120 L130 160 L180 105 L240 155 L300 110 L360 145 L420 100 L480 140 L500 125 L500 220 L0 220z" fill="url(#mt2)" opacity=".7"/>
+          <ellipse cx="250" cy="260" rx="300" ry="55" fill="url(#snow-ground)"/>
+          <ellipse cx="130" cy="252" rx="160" ry="40" fill="#EAF0F6"/>
+          <ellipse cx="380" cy="255" rx="180" ry="45" fill="#E8EEF4"/>
+          <rect y="230" width="500" height="50" fill="url(#snow-ground)"/>
+          <path d="M60 230 L68 185 L64 190 L70 165 L66 170 L72 148 L68 152 L74 130 L80 152 L76 148 L82 170 L78 165 L84 190 L80 185 L88 230z" fill="#7A94A8" opacity=".35"/>
+          <path d="M100 232 L106 195 L103 198 L108 178 L105 182 L110 162 L115 182 L112 178 L117 198 L114 195 L120 232z" fill="#7A94A8" opacity=".3"/>
+          <path d="M380 228 L388 180 L384 185 L390 158 L386 162 L392 138 L398 162 L394 158 L400 185 L396 180 L404 228z" fill="#7A94A8" opacity=".3"/>
+          <path d="M430 232 L436 198 L433 202 L438 182 L435 185 L440 168 L445 185 L442 182 L447 202 L444 198 L450 232z" fill="#7A94A8" opacity=".25"/>
+          <path d="M150 234 L155 205 L153 208 L157 192 L155 195 L160 178 L165 195 L163 192 L167 208 L165 205 L170 234z" fill="#8AA0B4" opacity=".22"/>
+        </g>
       </svg>
       <div class="c4-inner"></div>
     </div>
 
     <!-- Card 5 — Charcoal -->
-    <div class="card c5">
+    <div class="card c5 reveal">
       <div class="card-icon">
         <svg viewBox="0 0 24 24">
           <path d="M12 3 C9 6,7 9,7 12 a5 5 0 0 0 10 0 C17 9,15 6,12 3z" stroke="#fff" fill="none" stroke-width="1.4"/>
@@ -584,7 +634,7 @@ body{
     </div>
 
     <!-- Card 6 — Pure White -->
-    <div class="card c6">
+    <div class="card c6 reveal">
       <div class="card-icon">
         <svg viewBox="0 0 24 24">
           <path d="M12 2 L16.5 7 L16.5 15 L12 20 L7.5 15 L7.5 7z"/>
@@ -602,5 +652,65 @@ body{
 <!-- ======================== FOOTER ======================== -->
 <footer class="footer">Pestres 1</footer>
 
+<script>
+(function(){
+  if(matchMedia('(prefers-reduced-motion:reduce)').matches) return;
+
+  /* --- Reveal on scroll (IntersectionObserver) --- */
+  const io = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting){
+        e.target.classList.add('visible');
+        io.unobserve(e.target);
+      }
+    });
+  },{threshold:0.15});
+
+  document.querySelectorAll('.reveal').forEach(function(el){ io.observe(el) });
+
+  /* --- Crystal parallax on scroll --- */
+  var crystalLg = document.querySelector('.deco-crystal-lg');
+  var crystalMd = document.querySelector('.deco-crystal-md');
+  var crystalSm = document.querySelector('.deco-crystal-sm');
+  var frostL1   = document.querySelector('.deco-frost-line1');
+  var frostL2   = document.querySelector('.deco-frost-line2');
+
+  /* --- Card 4 mountain layers --- */
+  var c4        = document.querySelector('.c4');
+  var pFar      = document.querySelector('.parallax-far');
+  var pNear     = document.querySelector('.parallax-near');
+
+  var ticking = false;
+  window.addEventListener('scroll', function(){
+    if(!ticking){
+      requestAnimationFrame(onScroll);
+      ticking = true;
+    }
+  },{passive:true});
+
+  function onScroll(){
+    var sy = window.scrollY;
+
+    if(crystalLg) crystalLg.style.transform = 'rotate(-'+(0 + sy*.008)+'deg) translateY('+sy*.06+'px)';
+    if(crystalMd) crystalMd.style.transform = 'rotate('+(30 - sy*.012)+'deg) translateY('+sy*.04+'px)';
+    if(crystalSm) crystalSm.style.transform = 'rotate(-'+(15 + sy*.005)+'deg) translateY('+sy*.08+'px)';
+    if(frostL1)   frostL1.style.transform   = 'translateY('+sy*.03+'px)';
+    if(frostL2)   frostL2.style.transform   = 'rotate(60deg) translateY('+sy*.02+'px)';
+
+    if(c4 && pFar && pNear){
+      var r = c4.getBoundingClientRect();
+      var vh = window.innerHeight;
+      if(r.top < vh && r.bottom > 0){
+        var progress = (vh - r.top) / (vh + r.height);
+        var offset = (progress - 0.5) * 18;
+        pFar.style.transform  = 'translateY('+(offset * 0.4)+'px)';
+        pNear.style.transform = 'translateY('+(offset * -0.6)+'px)';
+      }
+    }
+
+    ticking = false;
+  }
+})();
+</script>
 </body>
 </html>
